@@ -87,14 +87,16 @@ export default function Home() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      bgcolor="darkslategray"
     >
       <Stack
         direction={'column'}
         width="500px"
         height="700px"
-        border="1px solid black"
+        border="1px solid lightgray"
         p={2}
         spacing={3}
+        bgcolor="#202020"
       >
         <Stack
           direction={'column'}
@@ -114,8 +116,8 @@ export default function Home() {
               <Box
                 bgcolor={
                   message.role === 'assistant'
-                    ? 'primary.main'
-                    : 'secondary.main'
+                    ? '#4A90E2'
+                    : '#34A853'
                 }
                 color="white"
                 borderRadius={16}
@@ -125,7 +127,6 @@ export default function Home() {
               </Box>
             </Box>
           ))}
-          <div ref={messagesEndRef} />
         </Stack>
         <Stack direction={'row'} spacing={2}>
           <TextField
@@ -133,18 +134,18 @@ export default function Home() {
             fullWidth
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={handleKeyPress}
-            disabled={isLoading}
+            InputLabelProps={{
+              style: { color: '#ccc' },
+            }}
+            InputProps={{
+              style: { color: 'white', backgroundColor: '#333' },
+            }}
           />
-          <Button
-            variant="contained"
-            onClick={sendMessage}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Sending...' : 'Send'}
+          <Button variant="contained" onClick={sendMessage} style={{ backgroundColor: '#1a73e8', color: 'white' }}>
+            Send
           </Button>
         </Stack>
       </Stack>
     </Box>
-  );
+  )
 }
